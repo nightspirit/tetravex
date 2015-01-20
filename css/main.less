@@ -1,0 +1,102 @@
+@blue: #1FAFBF;
+@red: #F2505D;
+@green: #82D96A;
+
+.user-select (@val) {
+	-webkit-touch-callout:  @val;
+	-webkit-user-select:    @val;
+	-khtml-user-select:     @val;
+	-moz-user-select:       @val;
+	-ms-user-select:        @val;
+	user-select:            @val;
+}
+
+.flr{
+	float:right;
+}
+
+.board{
+	&:after{
+		content:'';
+		clear:both;
+		display: block;
+	}
+}
+
+.piece{
+	position: relative;
+	width:33%;
+	float:left;
+	box-sizing: border-box;
+	outline: 1px solid #f1f1f1;
+	cursor: pointer;
+	.user-select(none);
+
+	&:after{
+		content:'';
+		display: block;
+		height:0;
+		padding-bottom:100%;
+	}
+
+	> span{
+		position: absolute;
+		display: inline-block;
+		font-size:2em;
+		width:2em;
+		height:2em;
+		text-align: center;
+		line-height: 2em;
+
+		&.top{
+			top:0;
+			left:50%;
+			margin-left: -1em;
+		}
+
+		&.bottom{
+			bottom:0;
+			left:50%;
+			margin-left: -1em;
+		}
+
+		&.left{
+			left:0;
+			top:50%;
+			margin-top: -1em;
+		}
+
+		&.right{
+			right:0;
+			top:50%;
+			margin-top: -1em;
+		}
+	}
+
+	&.dummy{
+		background: transparent;
+		> span{
+			display: none;
+		}
+	}
+
+	&:hover{
+		outline: 2px solid @blue;
+	}
+
+	&.selected{
+		color:#fff;
+		background: @blue;
+		cursor: move;
+	}
+
+}
+
+.b1 .piece.error{
+	color:#fff;
+	background: @red;
+}
+
+.won {
+	color:@green;
+}
